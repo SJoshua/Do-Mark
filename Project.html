@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<!--Powered by Do Mark-->
+<html>
+	<head>
+		<meta http-equiv=Content-Type content="text/html;charset=utf-8">
+		<title>
+			Project - Do Mark - Version 1.1.0.2
+		</title>
+	</head>
+	<body>
+		<link rel=stylesheet href="Style.css" type="text/css">
+		<div class="post">
+			<div class="entry">
+				<a><h2><font color=blue>Do Mark - Version 1.1.0.2</font></h2></a>
+				<h4>简介</h4>
+				<blockquote>
+					<p>研究AI中所开发的一个工具。</p>
+					<p>Do Mark（Do标记）属于一种<b>标记语言</b>。</p>
+					<p>它可以快速的用来生成html工程文档。</p>
+				</blockquote>
+				<h4>使用介绍</h4>
+				<blockquote>
+					<p>你需要创建一个名为<i>Project.do</i>的文件于当前目录下。</p>
+					<p>运行<i>Change.lua</i>，你可以看见程序生成了名为<i>Project.html</i>的工程文件。</p>
+					<p>另外，该文件的样式表依赖于目录下的<i>Style.css</i>。</p>
+					<h4>格式</h4>
+					<blockquote>
+						<p>你可以从附带的<i>示例</i>(这个文件)看到效果。</p>
+						<p>它是由Project.do生成的。</p>
+						<p>它的格式是这样：</p>
+						<blockquote>
+							<p>===工程名===</p>
+							<p>正文内容</p>
+						</blockquote>
+						<p>需要注意的是，在工程名之前的内容全部都会被忽略，不被转换处理。</p>
+						<p>然后是冒号语法（:）它的作用是把加上四级标题。</p>
+						<p>接着，是&lt;和&gt;，它们是界定符。&lt;等价于&lt;blockquote&gt;，而&gt;等价于&lt;/blockquote&gt;。</p>
+						<p>另外，Do标记提供了几种特殊格式。</p>
+						<blockquote>
+							<p>效果     格式</p>
+							<p><b>粗体</b>    %<b>文本%</b></p>
+							<p><i>斜体</i>	    &#33;文本&#33;</p>
+							<p><i>下划线</i>  &#95;文本&#95;</p>
+							<p><del>删除线</del>  &#45;文本&#45;</p>
+						</blockquote>
+						<p>除了这些，Do标记还提供了超链接的语法。</p>
+						<blockquote>
+							<p><a href="http://srkf.tk/">暗影の森</a></p>
+							<p>&#91;link=地址&#93;文本&#91;/link&#93;</p>
+							<p>等价于&lt;a href="地址"&gt;文本&lt;/a&gt;</p>
+						</blockquote>
+						<p>同样类似的有颜色语法。</p>
+						<blockquote>
+							<p><font color=blue>示例</font></p>
+							<p>&#91;color 颜色英文/代码&#93;文本&#91;/color&#93;</p>
+							<p>等价于&lt;font color=颜色英文/代码&gt;文本&lt;/font&gt;</p>
+						</blockquote>
+						<p>那么同样还有一个字体的设定。</p>
+						<blockquote>
+							<p><font face="宋体">示例</font></p>
+							<p>&#91;font 字体&#93;文本&#91;/font&#93;</p>
+							<p>等价于&lt;font face=字体&gt;文本&lt;/font&gt;</p>
+						</blockquote>
+						<p>……当然，还有字体的大小。</p>
+						<blockquote>
+							<p><font size=16px>示例</font></p>
+							<p>&#91;size 大小&#93;文本&#91;/size&#93;</p>
+							<p>等价于&lt;font size=大小px&gt;文本&lt;/font&gt;</p>
+							<p>大小限定为整数。</p>
+						</blockquote>
+						<p>嗯，插入图片我当然也是人性化的提供了~</p>
+						<blockquote>
+							<p><a href="http://srkf.tk/"><img src="image/SFicon.jpg" alt="图像文件不存在" width=100 height=100></a></p>
+							<p>&#91;img 文件 宽x高&#93; 或者 &#91;img 文件&#93;</p>
+							<p>等价于&lt;img src="/image/文件" alt="图像文件不存在"&gt;</p>
+							<p>宽/高限定为整数（不指定时默认为最大）；文件存放在当前目录下的image文件夹内。</p>
+							<p>（如果加上超链接图片会有边框的说，挺漂亮的）</p>
+						</blockquote>
+						<p>Do标记里面的表格有另外的存在（Q: Why? A: Why not? 理由很简单，缩进不好看（啊喂））。</p>
+						<blockquote>
+							<table border="3" width="250">
+								<tr>
+									<td align="left">第一行</td>
+									<td align="right">第二列</td>
+								</tr>
+								<tr>
+									<td align="right">第一列</td>
+									<td align="left">第二行</td>
+								</tr>
+							</table>
+							<p>&#123;</p>
+							<p>&#64;第一行&#36;第二列&#64;</p>
+							<p>第一列&#64;&#36;&#64;第二行</p>
+							<p>&#125;</p>
+							<p>它们等价于html中的Table（因为略长就不写了）。</p>
+							<p>在这里面也存在着特殊语法，它被称为@(at)标记。</p>
+							<p>当@在文字左边时，就会左对齐；@在文字右边时则相反。当然也有专属于@的转义符（&#37;&#64;）。不过一般不需要转义，除非它在文本的最左边/最右边。@标记也适用于普通文本。</p>
+						</blockquote>
+						<p>那么，还有转义符的存在（这是必然的也是必要的）。</p>
+						<blockquote>
+							<p>Do标记转义有如下几种：</p>
+							<p>&#37;&#37; &#37;&#33; &#37;&#95; &#37;&#45; &#37;&lt; &#37;&gt; &#37;%* &#37;&#91;  &#37;&#93; &#37;&#123; &#37;&#125; &#37;&#36; &#37;&#64;</p>
+							<p>转义后的结果是百分号右边的符号。</p>
+						</blockquote>
+						<p>最后，Do标记中，<b>缩进的格式</b>和<b>前导空格/后导空格</b>都是没有任何意义的。</p>
+						<p>Do标记处理器将会淡定的<b>忽略</b>掉你<b>所有的前导空格/后导空格</b>。</p>
+						<p>另外书写Do标记时缩进请使用<b>空格</b>而不是Tab。理由很简单：Tab将会被误解进代码里面。</p>
+						<p>如果你确实需要在开头放上空格的话我更加推荐你使用表或者右缩进，它们的相关语法我将会在后面的版本添加。</p>
+						<p>另外值得注意的一点是不推荐在文本中间内连续放过多的空格，它们在html中的体现只是一个空格（Tab也是一样的）。</p>
+					</blockquote>
+					<h4>其它的事情</h4>
+					<blockquote>
+						<p>Do处理器代码有些混乱（其实是相当混乱），好看的貌似只有这个页面(=ω=)和其源代码文件(=ω=)了~</p>
+						<p>看似很神奇但是其实只不过是做了一点文本处理而已。所以吐槽什么的尽管来吧（我已经做好心理准备了，哼！）</p>
+						<p>用html代码的时候要注意有可能会被Do转换器理解为是blockquote=~=所以呢，要注意的东西就是直接用html时要用中括号(&#91;&#93;)取代尖括号(&lt;&gt;)。需要使用中括号的时候记得加上转义符呢(&#37;&#91;)哦~</p>
+						<p><b>那么最重要的一点：尽量避免一行的末尾加上&gt;符号（除非是你要结束一个段落）。它可能会被误解为结束一个段落的符号。如果你确实需要请一定要保证加上转义符。</b></p>
+					</blockquote>
+				</blockquote>
+				<h4>附录~颜色列表</h4>
+				<blockquote>
+					<table border="3" width="250">
+						<tr>
+							<td align="left"><font color=antiquewhite>古典白色</font></td>
+							<td align="left"><b>antiquewhite</b></td>
+						</tr>
+						<tr>
+							<td align="left"><font color=aqua>浅绿色</font></td>
+							<td align="left"><b>aqua</b></td>
+						</tr>
+						<tr>
+							<td align="left"><font color=aquamarine>碧绿色</font></td>
+							<td align="left"><b>aquamarine</b></td>
+						</tr>
+						<tr>
+							<td align="left"><font color=azure>天蓝色</font></td>
+							<td align="left"><b>azure</b></td>
+						</tr>
+						<tr>
+							<td align="left"><font color=beige>米色</font></td>
+							<td align="left"><b>beige</b></td>
+						</tr>
+						<tr>
+							<td align="left"><font color=bisque>桔黄色</font></td>
+							<td align="left"><b>bisque</b></td>
+						</tr>
+						<tr>
+							<td align="left"><font color=black>黑色</font></td>
+							<td align="left"><b>black</b></td>
+						</tr>
+						<tr>
+							<td align="left"><font color=blanchedalmond>白杏色</font></td>
+							<td align="left"><b>blanchedalmond</b></td>
+						</tr>
+						<tr>
+							<td align="left"><font color=blue>蓝色</font></td>
+							<td align="left"><b>blue</b></td>
+						</tr>
+						<tr>
+							<td align="left"><font color=blueviolet>蓝紫色</font></td>
+							<td align="left"><b>blueviolet</b></td>
+						</tr>
+						<tr>
+							<td align="left"><font color=brown>褐色</font></td>
+							<td align="left"><b>brown</b></td>
+						</tr>
+						<tr>
+							<td align="left"><font color=burlywood>实木色</font></td>
+							<td align="left"><b>burlywood</b></td>
+						</tr>
+						<tr>
+							<td align="left"><font color=cadetblue>刺桧蓝色</font></td>
+							<td align="left"><b>cadetblue</b></td>
+						</tr>
+						<tr>
+							<td align="left"><font color=chartreuse>亮黄绿色</font></td>
+							<td align="left"><b>chartreuse</b></td>
+						</tr>
+						<tr>
+							<td align="left"><font color=chocolate>巧克力色</font></td>
+							<td align="left"><b>chocolate</b></td>
+						</tr>
+						<tr>
+							<td align="left"><font color=coral>珊瑚色</font></td>
+							<td align="left"><b>coral</b></td>
+						</tr>
+						<tr>
+							<td align="left"><font color=cornflowerblue>矢车菊色</font></td>
+							<td align="left"><b>cornflowerblue</b></td>
+						</tr>
+						<tr>
+							<td align="left"><font color=cornsilk>谷丝色</font></td>
+							<td align="left"><b>cornsilk</b></td>
+						</tr>
+						<tr>
+							<td align="left"><font color=crimson>深红色</font></td>
+							<td align="left"><b>crimson</b></td>
+						</tr>
+						<tr>
+							<td align="left"><font color=cyan>蓝绿色</font></td>
+							<td align="left"><b>cyan</b></td>
+						</tr>
+						<tr>
+							<td align="left"><font color=darkblue>深蓝色</font></td>
+							<td align="left"><b>darkblue</b></td>
+						</tr>
+						<tr>
+							<td align="left"><font color=darkcyan>深青色</font></td>
+							<td align="left"><b>darkcyan</b></td>
+						</tr>
+						<tr>
+							<td align="left"><font color=darkgoldenrod>深金杆色</font></td>
+							<td align="left"><b>darkgoldenrod</b></td>
+						</tr>
+						<tr>
+							<td align="left"><font color=darkgray>深灰色</font></td>
+							<td align="left"><b>darkgray</b></td>
+						</tr>
+						<tr>
+							<td align="left"><font color=darkgreen>深绿色</font></td>
+							<td align="left"><b>darkgreen</b></td>
+						</tr>
+						<tr>
+							<td align="left"><font color=darkkhaki>深黄褐色</font></td>
+							<td align="left"><b>darkkhaki</b></td>
+						</tr>
+						<tr>
+							<td align="left"><font color=darkmagenta>深洋红色</font></td>
+							<td align="left"><b>darkmagenta</b></td>
+						</tr>
+						<tr>
+							<td align="left"><font color=darkolivegreen>深橄榄绿色</font></td>
+							<td align="left"><b>darkolivegreen</b></td>
+						</tr>
+						<tr>
+							<td align="left"><font color=darkorange>深橙色</font></td>
+							<td align="left"><b>darkorange</b></td>
+						</tr>
+						<tr>
+							<td align="left"><font color=darkorchid>深紫色</font></td>
+							<td align="left"><b>darkorchid</b></td>
+						</tr>
+						<tr>
+							<td align="left"><font color=darkred>深红色</font></td>
+							<td align="left"><b>darkred</b></td>
+						</tr>
+						<tr>
+							<td align="left"><font color=darksalmon>深肉色</font></td>
+							<td align="left"><b>darksalmon</b></td>
+						</tr>
+						<tr>
+							<td align="left"><font color=darkseagreen>深海绿色</font></td>
+							<td align="left"><b>darkseagreen</b></td>
+						</tr>
+						<tr>
+							<td align="left"><font color=darkslateblue>深暗灰蓝色</font></td>
+							<td align="left"><b>darkslateblue</b></td>
+						</tr>
+						<tr>
+							<td align="left"><font color=darkslategray>深暗蓝灰色</font></td>
+							<td align="left"><b>darkslategray</b></td>
+						</tr>
+						<tr>
+							<td align="left"><font color=darkturquoise>深青绿色</font></td>
+							<td align="left"><b>darkturquoise</b></td>
+						</tr>
+						<tr>
+							<td align="left"><font color=darkviolet>深紫色</font></td>
+							<td align="left"><b>darkviolet</b></td>
+						</tr>
+						<tr>
+							<td align="left"><font color=deeppink>深粉色</font></td>
+							<td align="left"><b>deeppink</b></td>
+						</tr>
+						<tr>
+							<td align="left"><font color=deepskyblue>深天蓝色</font></td>
+							<td align="left"><b>deepskyblue</b></td>
+						</tr>
+						<tr>
+							<td align="left"><font color=dimgray>暗灰色</font></td>
+							<td align="left"><b>dimgray</b></td>
+						</tr>
+						<tr>
+							<td align="left"><font color=dodgerblue>遮板蓝色</font></td>
+							<td align="left"><b>dodgerblue</b></td>
+						</tr>
+						<tr>
+							<td align="left"><font color=firebrick>砖色</font></td>
+							<td align="left"><b>firebrick</b></td>
+						</tr>
+						<tr>
+							<td align="left"><font color=floralwhite>花白色</font></td>
+							<td align="left"><b>floralwhite</b></td>
+						</tr>
+						<tr>
+							<td align="left"><font color=forestgreen>葱绿色</font></td>
+							<td align="left"><b>forestgreen</b></td>
+						</tr>
+						<tr>
+							<td align="left"><font color=fushcia>紫红色</font></td>
+							<td align="left"><b>fushcia</b></td>
+						</tr>
+						<tr>
+							<td align="left"><font color=gainsboro>庚斯博罗灰色</font></td>
+							<td align="left"><b>gainsboro</b></td>
+						</tr>
+						<tr>
+							<td align="left"><font color=ghostwhite>幽灵白色</font></td>
+							<td align="left"><b>ghostwhite</b></td>
+						</tr>
+						<tr>
+							<td align="left"><font color=gold>金黄色</font></td>
+							<td align="left"><b>gold</b></td>
+						</tr>
+						<tr>
+							<td align="left"><font color=goldenrod>金杆黄色</font></td>
+							<td align="left"><b>goldenrod</b></td>
+						</tr>
+						<tr>
+							<td align="left"><font color=gray>灰色</font></td>
+							<td align="left"><b>gray</b></td>
+						</tr>
+						<tr>
+							<td align="left"><font color=green>绿色</font></td>
+							<td align="left"><b>green</b></td>
+						</tr>
+						<tr>
+							<td align="left"><font color=greenyellow>绿黄色</font></td>
+							<td align="left"><b>greenyellow</b></td>
+						</tr>
+						<tr>
+							<td align="left"><font color=honeydew>蜜汁色</font></td>
+							<td align="left"><b>honeydew</b></td>
+						</tr>
+						<tr>
+							<td align="left"><font color=hotpink>亮粉色</font></td>
+							<td align="left"><b>hotpink</b></td>
+						</tr>
+						<tr>
+							<td align="left"><font color=indianred>印第安红色</font></td>
+							<td align="left"><b>indianred</b></td>
+						</tr>
+						<tr>
+							<td align="left"><font color=indigo>靛青色</font></td>
+							<td align="left"><b>indigo</b></td>
+						</tr>
+						<tr>
+							<td align="left"><font color=ivory>象牙色</font></td>
+							<td align="left"><b>ivory</b></td>
+						</tr>
+						<tr>
+							<td align="left"><font color=khaki>黄褐色</font></td>
+							<td align="left"><b>khaki</b></td>
+						</tr>
+						<tr>
+							<td align="left"><font color=lavender>淡紫色</font></td>
+							<td align="left"><b>lavender</b></td>
+						</tr>
+						<tr>
+							<td align="left"><font color=lavenderblush>浅紫红色</font></td>
+							<td align="left"><b>lavenderblush</b></td>
+						</tr>
+						<tr>
+							<td align="left"><font color=lawngreen>草绿色</font></td>
+							<td align="left"><b>lawngreen</b></td>
+						</tr>
+						<tr>
+							<td align="left"><font color=lemonchiffon>柠檬纱色</font></td>
+							<td align="left"><b>lemonchiffon</b></td>
+						</tr>
+						<tr>
+							<td align="left"><font color=lightblue>浅蓝色</font></td>
+							<td align="left"><b>lightblue</b></td>
+						</tr>
+						<tr>
+							<td align="left"><font color=lightcoral>浅珊瑚色</font></td>
+							<td align="left"><b>lightcoral</b></td>
+						</tr>
+					</table>
+				</blockquote>
+				<h4>版权声明</h4>
+				<blockquote>
+					<p>Do标记由<a href="http://srkf.tk/">暗影软件</a>出品。它是<b>开源的</b>，你可以根据你的需要去自由地定制它。</p>
+				</blockquote>
+			</div>
+		</div>
+	</body>
+</html>

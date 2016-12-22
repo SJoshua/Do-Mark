@@ -32,7 +32,7 @@
   >
   除了这些，Do标记还提供了超链接的语法。
   <
-   [link=http://srkf.tk/]暗影の森[/link]
+   [link=http://sforest.in/]Shadow Forest[/link]
    %[link=地址%]文本%[/link%]
    等价于%<a href="地址"%>文本%</a%>
   >
@@ -57,7 +57,7 @@
   >
   嗯，插入图片我当然也是人性化的提供了~
   <
-   [link=http://srkf.tk/][img SFicon.jpg 100x100][/link]
+   [link=http://sforest.in/][img SFicon.jpg 100x100][/link]
    %[img 文件 宽x高%] 或者 %[img 文件%]
    等价于%<img src="/image/文件" alt="图像文件不存在"%>
    宽/高限定为整数（不指定时默认为最大）；文件存放在当前目录下的image文件夹内。
@@ -168,5 +168,5 @@
 >
 :版权声明
 <
- Do标记由[link=http://srkf.tk/]暗影软件[/link]出品。它是*开源的*，你可以根据你的需要去自由地定制它。
+ 这是住在[link=http://sforest.in/]Shadow Forest[/link]的SJoshua在初中的时候打的小玩意儿；它也许有用，也许没用。你可以根据你的需要去自由地定制它。
 >
